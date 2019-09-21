@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">StarterProject</string>
+    <string name="key_not_found">Key Not Found</string>
+    <string name="npa">Not Playable Ad</string>
+
+
+    <string name="is_ads_enabled" />
+    <string name="exit_app">Exit Application</string>
+    <string name="want_to_exit">Do you want to exit the application?</string>
+    <string name="banner_ad_id" />
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+
+
+    <string name="banner_ad_unit">	ca-app-pub-3940256099942544/6300978111 </string>
+    <string name="interstitial_ad_id"> ca-app-pub-3940256099942544/1033173712 </string>
+    <string name="native_ad_unit">ca-app-pub-3940256099942544/2247696110 </string>
+    <string name="main_activity_title">Muscle Fitness</string>
+    <string name="ad">AD</string>
+    <string name="alarm">ALARM</string>
+    <string name="hour">HOUR</string>
+    <string name="minute">MINUTES</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+</resources>

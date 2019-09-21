@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--INFO: change the colours-->
+    <color name="colorPrimary">#0A0A0F</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FFA81E</color>
+</resources>
