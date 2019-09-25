@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.BodyPointActivity">
 
+
+        <ImageView
+            android:id="@+id/body_point_main_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/_20sdp"
+            android:scaleType="fitXY"
+            ads:layout_constraintBottom_toBottomOf="parent"
+            ads:layout_constraintHorizontal_bias="0.0"
+            ads:layout_constraintVertical_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/body_point_toolbar" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/body_point_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
