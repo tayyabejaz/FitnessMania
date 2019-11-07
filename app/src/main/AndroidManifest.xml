@@ -4,6 +4,7 @@
     package="com.example.starterproject">
 
     <application
+        android:name=".application.AppClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.BodyPointActivity"></activity>
+        <activity android:name=".activities.MuscleDetailActivity"></activity>
+        <activity android:name=".activities.BodyPointActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

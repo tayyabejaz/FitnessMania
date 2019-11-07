@@ -28,40 +28,40 @@ public class BodyPointActivity extends AppCompatActivity {
         switch (title){
             case "Abs Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_abs_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_abs_body);
                 break;
 
             case "Arms Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_arms_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_arms_body);
                 break;
 
             case "Back Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_back_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_back_body);
                 break;
 
             case "Chest Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_chest_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_chest_body);
 
                 break;
 
             case "Hips Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_hips_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_hips_body);
 
                 break;
 
             case "Legs Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_legs_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_legs_body);
 
                 break;
 
             case "Buttocks Training":
                 binding.activityTitle.setText(title);
-                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_buttocks_body);
+//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_buttocks_body);
 
                 break;
         }

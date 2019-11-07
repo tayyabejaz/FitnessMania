@@ -21,4 +21,12 @@
     <string name="hour">HOUR</string>
     <string name="minute">MINUTES</string>
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="abs">Abs</string>
+    <string name="arms">Arms</string>
+    <string name="back">Back</string>
+    <string name="shoulders">Shoulders</string>
+    <string name="legs">Legs</string>
+    <string name="chest">Chest</string>
+    <string name="hips">Hips</string>
+    <string name="buttocks">Buttocks</string>
 </resources>

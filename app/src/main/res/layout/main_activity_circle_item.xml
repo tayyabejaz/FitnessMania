@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/circle_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
             android:layout_margin="@dimen/_5sdp"
-            android:src="@drawable/fitness_mania_abs_circle" />
+            />
 
 
     </LinearLayout>

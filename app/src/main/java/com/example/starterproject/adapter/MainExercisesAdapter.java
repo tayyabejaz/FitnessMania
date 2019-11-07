@@ -9,25 +9,35 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.starterproject.R;
+import com.example.starterproject.application.AppClass;
 import com.example.starterproject.listener.OnRecyclerClickListener;
-import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainExercisesAdapter extends RecyclerView.Adapter<MainExercisesAdapter.ExerciseViewHolder> {
 
 
     private Context context;
     private OnRecyclerClickListener clickListener;
-    private int[] images = {
-            R.drawable.fitness_mania_abs_circle,
-            R.drawable.fitness_mania_arms_circle,
-            R.drawable.fitness_mania_back_circle,
-            R.drawable.fitness_mania_chest_circle,
-            R.drawable.fitness_mania_hips_circle,
-            R.drawable.fitness_mania_legs_circle,
-            R.drawable.fitness_mania_buttocks_circle};
 
-    public void setClickListener(OnRecyclerClickListener listener){
+    private List<String> itemList = new ArrayList<String>() {
+        {
+            add(AppClass.getContext().getString(R.string.abs));
+            add(AppClass.getContext().getString(R.string.arms));
+            add(AppClass.getContext().getString(R.string.back));
+            add(AppClass.getContext().getString(R.string.shoulders));
+            add(AppClass.getContext().getString(R.string.legs));
+            add(AppClass.getContext().getString(R.string.chest));
+            add(AppClass.getContext().getString(R.string.hips));
+            add(AppClass.getContext().getString(R.string.buttocks));
+
+        }
+    };
+
+    public void setClickListener(OnRecyclerClickListener listener) {
         clickListener = listener;
     }
 
@@ -37,14 +47,16 @@ public class MainExercisesAdapter extends RecyclerView.Adapter<MainExercisesAdap
 
         context = parent.getContext();
 
-        View view = LayoutInflater.from(context).inflate(R.layout.main_activity_circle_item,parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.main_activity_circle_item, parent, false);
         return new ExerciseViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ExerciseViewHolder holder, int position) {
 
-        holder.circleImage.setImageResource(images[position]);
+
+        String path="file:///android_asset/main_images/"+itemList.get(position).toLowerCase()+"_circle.webp";
+        Glide.with(context).load(path).into(holder.circleImage);
 
         holder.itemView.setOnClickListener(view -> {
 
@@ -54,12 +66,13 @@ public class MainExercisesAdapter extends RecyclerView.Adapter<MainExercisesAdap
 
     @Override
     public int getItemCount() {
-        return 7;
+        return itemList.size();
     }
 
     class ExerciseViewHolder extends RecyclerView.ViewHolder {
 
         ImageView circleImage;
+
         ExerciseViewHolder(@NonNull View itemView) {
             super(itemView);
 
