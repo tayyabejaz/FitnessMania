@@ -63,7 +63,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Abs Training"
+                        android:text="Arms Training"
                         android:textColor="@android:color/white"/>
 
                     <androidx.recyclerview.widget.RecyclerView

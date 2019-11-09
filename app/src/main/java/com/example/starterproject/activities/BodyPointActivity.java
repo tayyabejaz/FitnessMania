@@ -5,63 +5,201 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.bumptech.glide.Glide;
 import com.example.starterproject.R;
 import com.example.starterproject.databinding.ActivityBodyPointBinding;
-import com.example.starterproject.helper.AdsManager;
+
+import static com.example.starterproject.Constants.ABS;
+import static com.example.starterproject.Constants.ARMS;
+import static com.example.starterproject.Constants.BACK;
+import static com.example.starterproject.Constants.BODY_PART_ACTIVITY;
+import static com.example.starterproject.Constants.BUTTOCKS;
+import static com.example.starterproject.Constants.CHEST;
+import static com.example.starterproject.Constants.HIPS;
+import static com.example.starterproject.Constants.LEGS;
+import static com.example.starterproject.Constants.MAIN_CIRCLE_IMAGE;
 
 public class BodyPointActivity extends AppCompatActivity {
 
     ActivityBodyPointBinding binding;
+    String intent_circle, intent_individual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_body_point);
 
-        updateUI(getIntent().getExtras().getString("title"));
 
+        intent_circle = getIntent().getExtras().getString(MAIN_CIRCLE_IMAGE);
+        if (intent_circle != null) {
+            updateUI();
+        }
+
+//        intent_individual = getIntent().getExtras().getString(BODY_PART_ACTIVITY);
+//        if (intent_individual != null) {
+//            updateImages();
+//        }
 
     }
 
-    private void updateUI(String title){
+//    private void updateImages() {
+//        switch (intent_individual) {
+//            case "abs":
+//
+//            case "abdominal":
+//
+//            case "obliques":
+//
+//            case "seratus anterior":
+//
+//                binding.activityTitle.setText("ABS Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/abs_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//
+//                break;
+//
+//
+//            case "arms":
+//
+//            case "biceps":
+//
+//            case "triceps":
+//
+//            case "forearms":
+//
+//                binding.activityTitle.setText("Arms Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/arms_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//
+//                break;
+//
+//            case "chest":
+//            case "pectoralis major":
+//
+//                binding.activityTitle.setText("Chest Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/chest_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//
+//                break;
+//
+//            case "shoulders":
+//            case "anterios delts":
+//            case "lateral_delts":
+//            case "posterior_delts":
+//
+//                binding.activityTitle.setText("Shoulders Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/shoulders_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//                break;
+//
+//            case "backs":
+//            case "infraspinatus":
+//            case "latissimus_dorsi":
+//            case "teres":
+//            case "trapezius":
+//
+//                binding.activityTitle.setText("Back Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/back_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//                break;
+//
+//            case "legs":
+//            case "calves":
+//            case "hamstrings":
+//            case "quads":
+//            case "sartorius":
+//            case "tibialis anterior":
+//
+//
+//                binding.activityTitle.setText("Legs Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/legs_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//                break;
+//
+//            case "buttocks":
+//            case "gluteus maximus":
+//            case "gluteus medius":
+//
+//
+//                binding.activityTitle.setText("Buttocks Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/buttocks_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//                break;
+//
+//            case "hips":
+//            case "hip abductors":
+//            case "hip flexor":
+//            case "tensor fasciae latae":
+//
+//
+//                binding.activityTitle.setText("Hips Training");
+//                Glide.with(this)
+//                        .load("file:///android_asset/full_body_image/hips_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+//                        .into(binding.bodyPointMainImage);
+//                break;
+//        }
+//    }
 
-        switch (title){
-            case "Abs Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_abs_body);
+    private void updateUI() {
+
+        switch (intent_circle) {
+            case ABS:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/abs_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
                 break;
 
-            case "Arms Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_arms_body);
+            case ARMS:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/arms_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
                 break;
 
-            case "Back Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_back_body);
+            case BACK:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/back_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
                 break;
 
-            case "Chest Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_chest_body);
-
-                break;
-
-            case "Hips Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_hips_body);
-
-                break;
-
-            case "Legs Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_legs_body);
+            case CHEST:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/chest_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
 
                 break;
 
-            case "Buttocks Training":
-                binding.activityTitle.setText(title);
-//                binding.bodyPointMainImage.setImageResource(R.drawable.fitnes_mania_buttocks_body);
+            case HIPS:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/hips_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
+
+                break;
+
+            case LEGS:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/legs_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
+
+                break;
+
+            case BUTTOCKS:
+                binding.activityTitle.setText(intent_circle);
+                Glide.with(this)
+                        .load("file:///android_asset/full_body_image/buttocks_muscles_structure".toLowerCase().replace(" ", "_") + ".webp")
+                        .into(binding.bodyPointMainImage);
 
                 break;
         }

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.starterproject.R;
 import com.example.starterproject.databinding.ExerciseListItemBinding;
+import com.example.starterproject.listener.OnDetailExerciseClicked;
 import com.example.starterproject.listener.OnRecyclerClickListener;
 import com.example.starterproject.model.ExerciseList;
 
@@ -22,10 +23,15 @@ public class ExercisesListAdapter extends RecyclerView.Adapter<ExercisesListAdap
     private Context context;
     private List<ExerciseList> dataList = new ArrayList();
     private OnRecyclerClickListener itemListener;
+    private OnDetailExerciseClicked detailExerciseClicked;
 
-    public void setOnListener(OnRecyclerClickListener listener) {
+
+    public void setOnListener(OnRecyclerClickListener listener, OnDetailExerciseClicked mListener) {
         this.itemListener = listener;
+        this.detailExerciseClicked = mListener;
+
     }
+
 
     public ExercisesListAdapter(Context context, List<ExerciseList> dataList) {
         this.context = context;
@@ -45,11 +51,13 @@ public class ExercisesListAdapter extends RecyclerView.Adapter<ExercisesListAdap
     public void onBindViewHolder(@NonNull ExerciseListViewHolder holder, int position) {
         holder.binding.exerciseListTextview.setText(dataList.get(position).exerciseName);
 
-        Glide.with(context).load(dataList.get(position).exerciseImage).into(holder.binding.exerciseListImage);
+        Glide.with(context)
+                .load(dataList.get(position).getExerciseImage()).placeholder(R.drawable.bg_rounded_primary)
+                .into(holder.binding.exerciseListImage);
 
         holder.itemView.setOnClickListener(view -> {
 
-            itemListener.OnExerciseClicked(position);
+            itemListener.onBodyInfoClick(dataList.get(position).getExerciseName());
 
         });
 

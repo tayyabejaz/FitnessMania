@@ -1,5 +1,6 @@
 package com.example.starterproject.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import com.example.starterproject.R;
 import com.example.starterproject.adapter.ExercisesListAdapter;
 import com.example.starterproject.adapter.MainExercisesAdapter;
 import com.example.starterproject.databinding.ActivityMainBinding;
+import com.example.starterproject.listener.OnDetailExerciseClicked;
 import com.example.starterproject.listener.OnRecyclerClickListener;
 import com.example.starterproject.managers.ActivityManager;
 import com.example.starterproject.model.ExerciseList;
@@ -18,7 +20,17 @@ import com.example.starterproject.model.ExerciseList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements OnRecyclerClickListener {
+import static com.example.starterproject.Constants.ABS;
+import static com.example.starterproject.Constants.ARMS;
+import static com.example.starterproject.Constants.BACK;
+import static com.example.starterproject.Constants.BUTTOCKS;
+import static com.example.starterproject.Constants.CHEST;
+import static com.example.starterproject.Constants.HIPS;
+import static com.example.starterproject.Constants.LEGS;
+import static com.example.starterproject.Constants.MAIN_CIRCLE_IMAGE;
+import static com.example.starterproject.Constants.MUSCLE_ACTIVITY;
+
+public class MainActivity extends AppCompatActivity implements OnRecyclerClickListener, OnDetailExerciseClicked {
 
     private ActivityMainBinding mainBinding;
     private MainExercisesAdapter mainExercisesAdapter;
@@ -45,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
     private List<ExerciseList> absItemList = new ArrayList<ExerciseList>() {
         {
             add(new ExerciseList("abs"));
-            add(new ExerciseList("abdominals"));
+            add(new ExerciseList("abdominal"));
             add(new ExerciseList("obliques"));
             add(new ExerciseList("seratus anterior"));
         }
@@ -110,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainBinding.setMainActivityData(this);
 
         initAdapters();
     }
@@ -121,28 +132,28 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
         mainExercisesAdapter.setClickListener(this);
 
         exercisesListAdapterAbs = new ExercisesListAdapter(this, absItemList);
-        exercisesListAdapterAbs.setOnListener(this);
+        exercisesListAdapterAbs.setOnListener(this, this);
 
         exercisesListAdapterArms = new ExercisesListAdapter(this, armsitemList);
-        exercisesListAdapterArms.setOnListener(this);
+        exercisesListAdapterArms.setOnListener(this, this);
 
         exercisesListAdapterBack = new ExercisesListAdapter(this, backItemList);
-        exercisesListAdapterBack.setOnListener(this);
+        exercisesListAdapterBack.setOnListener(this, this);
 
         exercisesListAdapterButtocks = new ExercisesListAdapter(this, buttocksItemList);
-        exercisesListAdapterButtocks.setOnListener(this);
+        exercisesListAdapterButtocks.setOnListener(this, this);
 
         exercisesListAdapterChest = new ExercisesListAdapter(this, chestItemList);
-        exercisesListAdapterChest.setOnListener(this);
+        exercisesListAdapterChest.setOnListener(this, this);
 
         exercisesListAdapterHips = new ExercisesListAdapter(this, hipsItemList);
-        exercisesListAdapterHips.setOnListener(this);
+        exercisesListAdapterHips.setOnListener(this, this);
 
         exercisesListAdapterLegs = new ExercisesListAdapter(this, legItemList);
-        exercisesListAdapterLegs.setOnListener(this);
+        exercisesListAdapterLegs.setOnListener(this, this);
 
         exercisesListAdapterShoulders = new ExercisesListAdapter(this, shouldersItemList);
-        exercisesListAdapterShoulders.setOnListener(this);
+        exercisesListAdapterShoulders.setOnListener(this, this);
         connectingToRecycler();
     }
 
@@ -176,46 +187,105 @@ public class MainActivity extends AppCompatActivity implements OnRecyclerClickLi
 
             case 0:
                 bundle = new Bundle();
-                bundle.putString("title", "Abs Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, ABS);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 1:
                 bundle = new Bundle();
-                bundle.putString("title", "Arms Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, ARMS);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 2:
                 bundle = new Bundle();
-                bundle.putString("title", "Back Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, BACK);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 3:
                 bundle = new Bundle();
-                bundle.putString("title", "Chest Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, CHEST);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 4:
                 bundle = new Bundle();
-                bundle.putString("title", "Hips Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, HIPS);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 5:
                 bundle = new Bundle();
-                bundle.putString("title", "Legs Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, LEGS);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
             case 6:
                 bundle = new Bundle();
-                bundle.putString("title", "Buttocks Training");
+                bundle.putString(MAIN_CIRCLE_IMAGE, BUTTOCKS);
                 ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
                 break;
 
         }
+    }
+
+    @Override
+    public void onBodyInfoClick(String exerciseName) {
+        Bundle bundle;
+        switch (exerciseName) {
+
+            case ABS:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, ABS);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case ARMS:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, ARMS);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case BACK:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, BACK);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case CHEST:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, CHEST);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case HIPS:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, HIPS);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case LEGS:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, LEGS);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+            case BUTTOCKS:
+                bundle = new Bundle();
+                bundle.putString(MAIN_CIRCLE_IMAGE, BUTTOCKS);
+                ActivityManager.getInstance().openNewActivity(MainActivity.this, BodyPointActivity.class, bundle, true);
+                break;
+
+        }
+    }
+
+
+    @Override
+    public void onDetailClicked(String exerciseName) {
+
+        Intent intent = new Intent(this, MuscleDetailActivity.class);
+        intent.putExtra(MUSCLE_ACTIVITY, exerciseName);
+
     }
 }

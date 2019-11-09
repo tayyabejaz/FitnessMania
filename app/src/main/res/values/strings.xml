@@ -29,4 +29,5 @@
     <string name="chest">Chest</string>
     <string name="hips">Hips</string>
     <string name="buttocks">Buttocks</string>
+    <string name="show_target_muscle_training">Show Target Muscle Training</string>
 </resources>
